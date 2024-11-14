@@ -18,7 +18,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public'))); // обслуговує файли з папки 'public'
+// app.use(express.static(path.join(__dirname, 'public'))); // обслуговує файли з папки 'public'
+app.use(express.static(path.join(process.cwd(), 'public'))); // процес вказує на кореневу папку проекту
 app.use(cors()); // дозвіл на запити з усіх доменів
 
 // основний маршрут для завантаження HTML
@@ -32,20 +33,20 @@ app.get('/posts/:type', async (req, res) => {
 
     let Model;
 
-    switch (type.toLowerCase()) {
-        case 'cafe': {
+    switch (type) {
+        case 'Cafe': {
             Model = Cafe;
             break;
         }
-        case 'gym': {
+        case 'Gym': {
             Model = Gym;
             break;
         }
-        case 'park': {
+        case 'Park': {
             Model = Park;
             break;
         }
-        case 'spa': {
+        case 'Spa': {
             Model = Spa;
             break;
         }
