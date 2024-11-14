@@ -1,7 +1,8 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import path from 'path'
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 import Cafe from './models/cafe.js';
 import Gym from './models/gym.js';
@@ -12,6 +13,9 @@ const DB_URL = 'mongodb+srv://developer_andrew:Variable2311@thenextstep.t6qek.mo
 const PORT = 5000;
 
 const app = express();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public'))); // обслуговує файли з папки 'public'
